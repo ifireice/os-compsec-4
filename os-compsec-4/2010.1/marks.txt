@@ -1,0 +1,20 @@
+DrSmithization
+	1 +
+
+h15
+	1 +; 2 +/-
+
+Yunnii
+	1 +; 2; 3
+
+AnatoliyMashir
+	1 +/-; 2 +/--; 3 +/-; 4 ++
+
+USU-Nervous
+	1 +/-; 2 +/-; 3 +/- -> ++
+
+ShadoWolf
+	1 +; 2 +; 3 +/-; 4 ++/-
+
+R59
+	1 +; 2 ++; 3 ++; 4 +

@@ -40,6 +40,9 @@ Suhvan
 KristinaVarankina
 	1 +; 2 +--; 3 +--;
 
+leviafan
+	1 +; 2 ++-; 3 +--; 4
+
 Список задач:
 	1 - hello world
 	2 - сортировка файлов с обработкой ошибок

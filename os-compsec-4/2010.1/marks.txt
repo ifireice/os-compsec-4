@@ -37,6 +37,9 @@ Plusandr
 Suhvan
 	1 +
 
+KristinaVarankina
+	1 +; 2 +--; 3 +--;
+
 Список задач:
 	1 - hello world
 	2 - сортировка файлов с обработкой ошибок

@@ -4,4 +4,35 @@
 по получению сигнала выдать номер процесса (свой собственный pid) и номер
 группы, в которую входит этот процесс (свой собственный pgid).
 
+2011.05.28.11.38.46
 
+Задачи 5. А у меня опять не компилируется:
+
+	$ g++ -O3 dekker.cpp -o dkr 
+	dekker.cpp: In function ‘void* dekker(int)’:
+	dekker.cpp:37:23: error: too few arguments to function ‘void critical_function(int)’
+	dekker.cpp:12:7: note: declared here
+	dekker.cpp:41:20: error: too many arguments to function ‘void mfence_c()’
+	dekker.cpp:17:6: note: declared here
+	dekker.cpp: In function ‘int main()’:
+	dekker.cpp:51:51: error: invalid conversion from ‘void* (*)(int)’ to ‘void* (*)(void*)’ [-fpermissive]
+	/usr/include/pthread.h:225:12: error:   initializing argument 3 of ‘int pthread_create(pthread_t*, const pthread_attr_t*, void* (*)(void*), void*)’ [-fpermissive]
+	dekker.cpp:58:47: error: invalid conversion from ‘void* (*)(int)’ to ‘void* (*)(void*)’ [-fpermissive]
+	/usr/include/pthread.h:225:12: error:   initializing argument 3 of ‘int pthread_create(pthread_t*, const pthread_attr_t*, void* (*)(void*), void*)’ [-fpermissive]
+	dekker.cpp:58:47: error: invalid conversion from ‘int’ to ‘void*’ [-fpermissive]
+	/usr/include/pthread.h:225:12: error:   initializing argument 4 of ‘int pthread_create(pthread_t*, const pthread_attr_t*, void* (*)(void*), void*)’ [-fpermissive]
+
+И ещё одна проблема: почему dekker_without_mfence - это .h файл? Компилятор
+такого не понимает.
+
+Но это только лишь во-первых. Во-вторых, посмотрите, пожалуйста, что Вам выдаст
+после компиляции кода без mfence компилятор. Посмотреть можно так:
+
+	g++ -O3 -S -masm=intel имя-файла.cpp -o имя-файла.asm
+
+Из этого должно быть понятно, что у Вас пока не совсем алгоритм Деккера
+написан, для которого очень важно, что обращения происходят именно к ячейкам
+памяти.
+
+В третьих, почему именно так расставлен mfence? И вообще, зачем именно нужно
+ставить mfence?

@@ -1,3 +1,15 @@
 2011.05.18.16.04.58
 
 Задача 2.
+
+2011.05.26.12.49.12
+
+Задача 5 и 5.(+1). Не компилируются обе с одинаковой ошибкой:
+
+	$ gcc -O3 dekker_mfence.c -D_GNU_SOURCE -o dmf -lrt -lpthread	
+	dekker_mfence.c: In function ‘proc1’:
+	dekker_mfence.c:14:1: error: parameter name omitted
+	dekker_mfence.c: In function ‘proc2’:
+	dekker_mfence.c:41:1: error: parameter name omitted
+
+Задача 5. Ещё проблема: она зависает - почему?

@@ -8,7 +8,7 @@
 
 	http://dl.dropbox.com/u/281916/delete/book.pdf
 
-Вам нужно посмотреть на --filter-tree
+Вам нужно посмотреть на filter-branch --tree-filter
 
 (2) Ваша программа не компилируется, вот какие ошибки я получаю:
 

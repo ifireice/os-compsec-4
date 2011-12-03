@@ -5,7 +5,7 @@
 (1  и 2) В хранилище не должно быть бинарных файлов. Удалите их при помощи
 команды Git filter-branch и опции --tree-filter. Подробности здесь
 
-	http://www-cs-students.stanford.edu/~blynn/gitmagic/intl/ru/ch08.html
+	http://www-cs-students.stanford.edu/~blynn/gitmagic/intl/ru/ch05.html
 
 А пока по минусу за каждый .exe.
 

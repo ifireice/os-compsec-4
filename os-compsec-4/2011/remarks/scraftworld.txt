@@ -133,12 +133,12 @@ filewrk.cpp:32:8: warning: unused variable ‘f’ [-Wunused-variable]
 можно было бы написать так:
 
 	int a[M][N];
-	int const (* tileA)[N / TSIZE][TX][TY] = (int (*)[N / TESIZE][TX][TY])a;
+	int const (* tileA)[N / TY][TX][TY] = (int (*)[N / TY][TX][TY])a;
 
 TY (TX) - это количество столбцов (строк) в плитке, а TSIZE = TX * TY. После
 чего можно было бы обращаться к элементам матрицы так:
 
-	tileA[i / TX][j / TSIZE][i % TX][j % TY]
+	tileA[i / TX][j / TY][i % TX][j % TY]
 
 И умножения, необходимые для вычисления смещения элемента от начала матрицы,
 компилятор сам бы вставил.

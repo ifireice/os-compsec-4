@@ -1,6 +1,57 @@
-2011.12.05.11.35.03
+2011.12.21.22.54.13
 
-Задача 1.
+Задача 0.
+
+Перенёс все минусы за бинарные файлы в хранилище в эту задачку. Надо
+почитстить.
+
+Задача 6.
+
+Опять у меня проблемы со сборкой:
+
+$ sh MAKE.sh 
+: No such file or directory
+gcc: fatal error: no input files
+compilation terminated.
+ld:scr.ld:2: ignoring invalid character `\240' in expression
+ld:scr.ld:2: ignoring invalid character `\240' in expression
+ld:scr.ld:2: ignoring invalid character `\240' in expression
+ld:scr.ld:2: ignoring invalid character `\240' in expression
+ld:scr.ld:2: ignoring invalid character `\240' in expression
+ld:scr.ld:2: ignoring invalid character `\240' in expression
+ld:scr.ld:2: ignoring invalid character `\240' in expression
+ld:scr.ld:2: ignoring invalid character `\240' in expression
+ld:scr.ld:3: ignoring invalid character `\240' in expression
+ld:scr.ld:3: ignoring invalid character `\240' in expression
+ld:scr.ld:3: ignoring invalid character `\240' in expression
+ld:scr.ld:3: ignoring invalid character `\240' in expression
+ld:scr.ld:3: ignoring invalid character `\240' in expression
+ld:scr.ld:3: ignoring invalid character `\240' in expression
+ld:scr.ld:3: ignoring invalid character `\240' in expression
+ld:scr.ld:3: ignoring invalid character `\240' in expression
+ld:scr.ld:4: ignoring invalid character `\240' in script
+ld:scr.ld:4: ignoring invalid character `\240' in script
+ld:scr.ld:4: ignoring invalid character `\240' in script
+ld:scr.ld:4: ignoring invalid character `\240' in script
+ld:scr.ld:4: ignoring invalid character `\240' in script
+ld:scr.ld:4: ignoring invalid character `\240' in script
+ld:scr.ld:4: ignoring invalid character `\240' in script
+ld:scr.ld:4: ignoring invalid character `\240' in script
+ld:scr.ld:5: ignoring invalid character `\240' in script
+ld:scr.ld:5: ignoring invalid character `\240' in script
+ld:scr.ld:5: ignoring invalid character `\240' in script
+ld:scr.ld:5: ignoring invalid character `\240' in script
+ld:scr.ld:5: ignoring invalid character `\240' in script
+ld:scr.ld:5: ignoring invalid character `\240' in script
+ld:scr.ld:5: ignoring invalid character `\240' in script
+ld:scr.ld:5: ignoring invalid character `\240' in script
+: No such file or directory
+objcopy: '1': No such file
+'asm: fatal: unable to open input file `a.asm
+cat: a: No such file or directory
+cat: 2: No such file or directory
+
+2011.12.05.11.35.03
 
 (1) Всё же хотелось бы, чтобы лишние файлы не просто были удалены из некоторой
 ревизии, а были полностью убраны из ветви. Делается это примерно так (если Вы

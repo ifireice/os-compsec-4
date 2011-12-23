@@ -1,3 +1,91 @@
+2011.12.23.13.35.20
+
+Задача 2. Вообще, логика красивая. Но
+
+	(1) Обработка ошибок. Файлы могут не прочитаться, могут не записаться.
+
+	(2) Если Вы формируете строки в памяти, то нужно следить за
+		переполнениями памяти. Существует функция snprintf (с буковкой
+		n).
+
+Задача 3. Ок. Исходник хороший, но не компилируется:
+	
+	task4.c:91:1: error: unknown type name 'uint_least32_t'
+	uint_least32_t Crc32(unsigned char *buf, size_t len)
+	^
+	task4.c:93:5: error: use of undeclared identifier 'uint_least32_t'
+	    uint_least32_t crc_table[256];
+	    ^
+	task4.c:94:5: error: use of undeclared identifier 'uint_least32_t'
+	    uint_least32_t crc; int i, j;
+	    ^
+	task4.c:98:9: error: use of undeclared identifier 'crc'
+		crc = i;
+		^
+	task4.c:100:13: error: use of undeclared identifier 'crc'
+		    crc = crc & 1 ? (crc >> 1) ^ 0xEDB88320UL : crc >> 1;
+		    ^
+	task4.c:100:19: error: use of undeclared identifier 'crc'
+		    crc = crc & 1 ? (crc >> 1) ^ 0xEDB88320UL : crc >> 1;
+			  ^
+	task4.c:100:30: error: use of undeclared identifier 'crc'
+		    crc = crc & 1 ? (crc >> 1) ^ 0xEDB88320UL : crc >> 1;
+				     ^
+	task4.c:100:57: error: use of undeclared identifier 'crc'
+		    crc = crc & 1 ? (crc >> 1) ^ 0xEDB88320UL : crc >> 1;
+								^
+	task4.c:103:9: error: use of undeclared identifier 'crc_table'
+		crc_table[i] = crc;
+		^
+	task4.c:103:24: error: use of undeclared identifier 'crc'
+		crc_table[i] = crc;
+			       ^
+	task4.c:106:5: error: use of undeclared identifier 'crc'
+	    crc = 0xFFFFFFFFUL;
+	    ^
+	task4.c:109:3: error: use of undeclared identifier 'crc'
+			crc = crc_table[(crc ^ *buf++) & 0xFF] ^ (crc >> 8);
+			^
+	task4.c:109:9: error: use of undeclared identifier 'crc_table'
+			crc = crc_table[(crc ^ *buf++) & 0xFF] ^ (crc >> 8);
+			      ^
+	task4.c:109:20: error: use of undeclared identifier 'crc'
+			crc = crc_table[(crc ^ *buf++) & 0xFF] ^ (crc >> 8);
+					 ^
+	task4.c:109:45: error: use of undeclared identifier 'crc'
+			crc = crc_table[(crc ^ *buf++) & 0xFF] ^ (crc >> 8);
+								  ^
+	task4.c:113:12: error: use of undeclared identifier 'crc'
+	    return crc ^ 0xFFFFFFFFUL;
+		   ^
+	task4.c:149:3: warning: implicitly declaring C library function 'exit' with type 'void (int) __attribute__((noreturn))'
+			exit(1);
+			^
+	task4.c:149:3: note: please include the header <stdlib.h> or explicitly provide a declaration for 'exit'
+	task4.c:167:2: warning: implicit declaration of function 'system' is invalid in C99 [-Wimplicit-function-declaration]
+		system("nasm check -o checkbin");
+		^
+2 warnings and 16 errors generated.
+
+Задача 5. Хорошо.
+
+Задание 6. Общее такое предложение: иногда удобно в скрипты для Bash в самое
+	начало дописывать set -e, чтобы они останавливались при возникновении
+	первой же ошибки.
+
+	И нужно учитывать, что сборка может осуществляться совсем на другой
+	системе, отличной от i386. Поэтому неплохо было бы в опции для
+	gcc добавить:
+
+		-m32 -march=i386
+	
+	И, соответственно, для ld:
+
+		-m elf_i686 --oformat=elf32-i386
+
+	А вообще, хорошо. Вроде, работает. Вы разобрались, в чём была ошибка?
+	
+
 2011.12.05.14.47.17
 
 Общее такое замечание: стиль записи без пробелов он, конечно, имеет право на

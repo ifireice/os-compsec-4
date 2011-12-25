@@ -1,0 +1,32 @@
+%define poly_low 0x8320
+%define poly_high 0xedb8
+
+	xor ax, byte -1
+	xor bx, byte -1
+	
+; polynom starts at ds:di, and is scanned by (bl bh : al ah) = (low : high)
+.crc32_loop:
+	xor bl, [di]
+	inc di
+
+	push cx
+
+	mov cx, 8
+.crc32_1b_loop:
+	shr ax, 1
+	rcr bx, 1
+	jnc .L0
+	xor bx, poly_low
+	xor ax, poly_high
+.L0:
+	loop .crc32_1b_loop
+
+	pop cx
+	loop .crc32_loop
+	
+	pop ds
+
+	xor ax, byte -1
+	xor bx, byte -1
+	mov [current_crc + 2], ax
+	mov [current_crc + 0], bx

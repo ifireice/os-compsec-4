@@ -1,6 +1,9 @@
 %define poly_low 0x8320
 %define poly_high 0xedb8
 
+	mov ax, [current_crc + 2]
+	mov bx, [current_crc]
+
 	xor ax, byte -1
 	xor bx, byte -1
 	

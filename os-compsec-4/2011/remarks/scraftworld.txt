@@ -1,3 +1,92 @@
+2012.01.11.13.46.17
+
+Задание 0. Опять появились злобные Binary. Ведь, существует возможность
+	автоматического игнорировать нежелательные файлы
+
+		man gitignore
+
+	Или просто в Google поискать. Файлы вот:
+
+	$ git log -p | grep Bin | grep 'files /dev/null'
+	Binary files /dev/null and b/task5/b differ
+	Binary files /dev/null and b/task5/b.obj differ
+	Binary files /dev/null and b/task5/f.o differ
+	Binary files /dev/null and b/task4/4.1/tilemul.exe differ
+	Binary files /dev/null and b/task4/4.2/g.obj differ
+	Binary files /dev/null and b/task4/4.2/result.exe differ
+	Binary files /dev/null and b/filework.exe differ
+	
+	Тут буквы a (отфильтровано) и b вначале путей означают, что обновление
+	через заплатку происходить от версии a к версии b. Эх... Всё же буду
+	настойчив в стремлении привить некоторую аккуратность, поэтому
+	7 минусов.
+
+Задание 6. Хорошо
+
+Задание 7. Неплохо, но не компилируется:
+
+	$ sh MAKE.sh 
+	In file included from /usr/include/features.h:382:0,
+	from /usr/include/stdint.h:26,
+	from /usr/lib/gcc/x86_64-unknown-linux-gnu/4.6.2/include/stdint.h:3,
+	from gpf.c:1:
+	/usr/include/gnu/stubs.h:7:27: fatal error: gnu/stubs-32.h: No such file or directory
+	compilation terminated.
+
+	Проблема в том, что stdint.h - это определения, работающие при
+	компиляции для целевой системы. Если она 64-битовая, а компиляция
+	происходит в 32-битовом режиме, то этот заголовок не сработает.
+
+	Поэтому нужно написать программу, которая сгенерирует нужный
+	заголовочный файл. Нечто вроде:
+
+	#include <stdio.h>
+
+	#define ifsize(sz, typename) do { \
+		if(sz == sizeof(typename)) return #typename; } while(0)
+
+	static const char * deftype(unsigned sz)
+	{
+		ifsize(sz, unsigned);
+		ifsize(sz, unsigned short);
+		ifsize(sz, unsigned int);
+
+		fprintf(stderr, "can't detect type of size %u\n", sz);
+		return NULL;
+	}
+
+	static char *const format =
+		"#ifndef uidefshincluded\n"
+		"#define uidefshincluded\n\n"
+		"typedef %s uint32_t;\n\n"
+		"endif\n";
+
+	int main(const int argc, const char *const *const argv)
+	{
+		printf(format, deftype(4));
+
+		return 0;
+	}
+
+	(1) Это было первое замечание.
+
+	(2) Нужно, чтобы обходилась загрузка как можно меньшим числом
+		магических чисел. А у Вас есть некое 0x9000. Почему именно
+		столько? И в бинарном файле же будет множество нулей, чтобы
+		заполнить бустое место.
+
+		И, ведь, можно сделать намного проще. Если Вам нужно
+		разместить на первом месте секцию из main.o, Вы можете написать:
+
+			.text ADDR:
+			{
+				main.o(.text);
+				*(.text);
+				...
+			}
+
+		нечто такое.
+
 2012.01.01.15.33.52
 
 Задание 7. Я так понимаю, оно у Вас ещё не доделано?

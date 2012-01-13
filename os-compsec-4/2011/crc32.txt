@@ -33,3 +33,4 @@
 	xor bx, byte -1
 	mov [current_crc + 2], ax
 	mov [current_crc + 0], bx
+

@@ -1,3 +1,30 @@
+2012.01.13.23.18.33
+
+Задание 7.
+
+	(1) Для ld тоже нужны дополнительные флаги.
+
+	(2) В Linux, в ELF, GCC не добавляет к именам внешних переменных
+		подчёркивания. Это особенность Windows. В итоге, я получаю
+		вот что:
+
+		task8.obj: In function `idtform':
+		task8.c:(.text+0x5c): undefined reference to `printGPF'
+		task8.c:(.text+0x68): undefined reference to `printGPF'
+		task8.c:(.text+0x9f): undefined reference to `idtloading'
+		task8.lidt: In function `_printGPF':
+		task8.lidt.asm:(.text+0xa): undefined reference to `_printing'
+
+		Для борьбы с такой напастью в NASM есть ключик --prefix.
+		Который позволяет нужное приписывать к именам переменных. Вам
+		надо global и extern объявления делать без подчёркивания, а в
+		файл сборки добавить опцию --prefix _, которую я потом легко
+		смогу убрать.
+
+		Я бы, конечно, мог бы и вручную подчёркивания удалить, но
+		хочется автоматизма.
+
+
 2012.01.11.17.54.00
 
 Задание 2. Хорошо

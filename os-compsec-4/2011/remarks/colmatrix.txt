@@ -1,3 +1,18 @@
+2012.01.17.16.15.44
+
+Задание 2.
+
+	(1) Не компилируется
+	
+		$ g++ Task2.cpp -o ./t2
+		Task2.cpp: In function ‘int main(int, char**)’:
+		Task2.cpp:34:33: error: ‘itoa’ was not declared in this scope
+		Task2.cpp:43:15: error: ‘system’ was not declared in this scope
+
+	(2) Длина записи числа d по основанию 16 действительно не будет
+		превышать sizeof(d) * 2 + 1, но запись по основанию 10 может
+		быть длиннее.
+
 2012.01.17.02.07.19
 
 Без изменений

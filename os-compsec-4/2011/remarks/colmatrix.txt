@@ -1,3 +1,54 @@
+2012.01.19.00.04.05
+
+Задание 2. Эх... Стало лучше, но...
+
+	(1) Ведь, не компилируется. При чём разные компиляторы говорят одно и
+		то же.
+
+		$ g++ Task2.cpp -o ./t2
+		Task2.cpp: In function ‘int main(int, char**)’:
+		Task2.cpp:36:33: error: ‘itoa’ was not declared in this scope
+
+		00.04 mike@0x02 ~/tmp/edu/2011/colmatrix
+		$ clang++ Task2.cpp -o ./t2
+		Task2.cpp:36:5: error: use of undeclared identifier 'itoa'
+						itoa(fileNum++, fileName, 16);
+						^
+		1 error generated.
+
+		Потому что:
+		Portability. This function is not defined in ANSI-C and is not
+		part of C++, but is supported by some compilers.
+
+		Что вызывает вопрос о том, откуда взялся 3disasm.txt? :)
+
+Задание 3. В целом, опять не так уж и плохо, но, ведь, всё равно, печальки...
+
+	(1) Ошибки. fseek тоже может не сработать, как и system, как и read,
+		как и т.д.
+
+	(2) Чтение с дискетки может завершиться с ошибкой. И почему вы не
+		устанавливаете dh (указатель головки) правильно?
+
+	(3) У Вас file какой-то совсем странный. Пример программы для Linux.
+		Как мне проверить, что всё работает? Как Вы проверяли?
+
+Задание 5. ОК
+
+Задание 6.
+
+	(1) Переводите систему из одного режима работы в другой без запрета
+		прерываний.
+	
+	(2) run.sh не работает:
+
+		$ sh run.sh 
+		nasm: fatal: unable to open input file `task6.asm'
+
+		Не во всех системах имена файлов не чувствительны к регистру.
+
+	Остальное нормально.
+
 2012.01.17.16.15.44
 
 Задание 2.

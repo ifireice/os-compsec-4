@@ -1,3 +1,61 @@
+2012.01.19.02.02.04
+
+Задание 2. Ну как же вы так исправляете, что оно потом компилироваться
+	перестаёт? Ну, ёлки-палки... Беда с вашей группой какая-то.
+
+	(1) Вот, пожалуйста:
+
+		$ g++ plan.cpp -o t2
+		plan.cpp: In function ‘void BootSector(long int, FILE*)’:
+		plan.cpp:8:34: error: ‘sprintf’ was not declared in this scope
+		plan.cpp:10:34: error: ‘fopen’ was not declared in this scope
+		plan.cpp:16:25: error: ‘fseek’ was not declared in this scope
+		plan.cpp:17:26: error: ‘fread’ was not declared in this scope
+		plan.cpp:18:28: error: ‘fwrite’ was not declared in this scope
+		plan.cpp:19:15: error: ‘ferror’ was not declared in this scope
+		plan.cpp:25:15: error: ‘fclose’ was not declared in this scope
+		plan.cpp: In function ‘int main()’:
+		plan.cpp:34:32: error: ‘fopen’ was not declared in this scope
+		plan.cpp:38:3: error: return-statement with no value, in function returning ‘int’ [-fpermissive]
+		plan.cpp:44:14: error: ‘fgetc’ was not declared in this scope
+		plan.cpp:45:17: error: ‘feof’ was not declared in this scope
+		plan.cpp:61:6: error: return-statement with no value, in function returning ‘int’ [-fpermissive]
+		plan.cpp:75:14: error: ‘fclose’ was not declared in this scope
+
+	(2) try-catch внутри цикла - это оооОoчень плохое решение.
+
+	(3) fseek, fgetc и прочие наши с Вами друзья тоже не безгрешны. Да, да,
+		могу по секрету сообщить, что они тоже могут вернуть код
+		ошибки, а совсем не то, что Вы от них ожидаете. Вот такие
+		они противные...
+
+Задание 3.
+
+	(1) А system? Разве system идеален?
+
+	(2) А чтение секторов BIOS-ом? Разве он не может не справиться со
+		своей задачей?
+
+	(3) И зачем Вам нужно поле crcpoly в ассемблерном коде?
+
+Задание 5. Не работает. Ба-бамс:
+
+	$ ./task5.bat 
+	gcc: error: main.c: No such file or directory
+	gcc: fatal error: no input files
+	compilation terminated.
+	gcc: error: main.o: No such file or directory
+	gcc: error: mult.o: No such file or directory
+	gcc: fatal error: no input files
+	compilation terminated.
+
+	Блин... Надежда, ну как так? Как можно сдавать задания по
+	программированию, не проверяя того, что они хотя бы компилируются?
+
+Задание 6. Сразу правильные флаги. Похвально. О, и даже переход в защищённый
+	режим под запретом от прерываний. Похвально вдвойне. Но чего ж
+	Вы тогда с предыдущими задачами-то так небрежно?
+
 2012.01.17.16.34.39
 
 Задание 1. Хорошо.
